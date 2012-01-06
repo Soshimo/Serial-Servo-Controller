@@ -146,8 +146,13 @@ namespace SerialServoController
 
             serialPort1.Read(buffer, 0, serialPort1.BytesToRead);
 
-            string data = ASCIIEncoding.ASCII.GetString(buffer);
-            Console.Write(data.Trim());
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < buffer.Length; i++)
+            {
+                builder.Append((char)buffer[i]);
+            }
+
+            Console.Write(builder.ToString());
         }
 
         private void WriteServoPosition(byte channel, byte angle)
@@ -308,6 +313,43 @@ namespace SerialServoController
 
         }
 
+        private void EnableDefs()
+        {
+            byte[] buffer = new byte[8];
+            if (serialPort1.IsOpen)
+            {
+                buffer[0] = (byte)'!';
+                buffer[1] = (byte)'A';
+                buffer[2] = (byte)'T';
+                buffer[3] = (byte)'T';
+                buffer[4] = (byte)'E';
+                buffer[5] = (byte)'D';
+                buffer[6] = (byte)'D';
+                buffer[7] = 1;
+
+                serialPort1.Write(buffer, 0, 8);
+            }
+        }
+
+        private void DisableDefs()
+        {
+            byte[] buffer = new byte[8];
+            if (serialPort1.IsOpen)
+            {
+                buffer[0] = (byte)'!';
+                buffer[1] = (byte)'A';
+                buffer[2] = (byte)'T';
+                buffer[3] = (byte)'T';
+                buffer[4] = (byte)'E';
+                buffer[5] = (byte)'D';
+                buffer[6] = (byte)'D';
+                buffer[7] = 0;
+
+                serialPort1.Write(buffer, 0, 8);
+            }
+
+        }
+
         private void channel1ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             writeDef(1, (byte)trackBar2.Value);
@@ -368,39 +410,17 @@ namespace SerialServoController
             writeDef(11, (byte)trackBar12.Value);
         }
 
-        private void disableDefinedValuesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            byte [] buffer = new byte[8];
-            if (serialPort1.IsOpen)
-            {
-                buffer[0] = (byte)'!';
-                buffer[1] = (byte)'A';
-                buffer[2] = (byte)'T';
-                buffer[3] = (byte)'T';
-                buffer[4] = (byte)'E';
-                buffer[5] = (byte)'D';
-                buffer[6] = (byte)'D';
-                buffer[7] = 0;
-
-                serialPort1.Write(buffer, 0, 8);
-            }
-        }
-
         private void enableDefinedValuesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            byte [] buffer = new byte[8];
-            if (serialPort1.IsOpen)
-            {
-                buffer[0] = (byte)'!';
-                buffer[1] = (byte)'A';
-                buffer[2] = (byte)'T';
-                buffer[3] = (byte)'T';
-                buffer[4] = (byte)'E';
-                buffer[5] = (byte)'D';
-                buffer[6] = (byte)'D';
-                buffer[7] = 1;
+            enableDefinedValuesToolStripMenuItem.Checked = !enableDefinedValuesToolStripMenuItem.Checked;
 
-                serialPort1.Write(buffer, 0, 8);
+            if (enableDefinedValuesToolStripMenuItem.Checked)
+            {
+                EnableDefs();
+            }
+            else
+            {
+                DisableDefs();
             }
         }
 

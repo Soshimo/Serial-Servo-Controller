@@ -35,9 +35,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSelectCommPortMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enableDefinedValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disableDefinedValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.writeChannelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.channel0ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.channel1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -209,42 +210,47 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileSelectCommPortMenuItem});
+            this.fileSelectCommPortMenuItem,
+            this.toolStripMenuItem1,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Text = "&File";
             // 
             // fileSelectCommPortMenuItem
             // 
             this.fileSelectCommPortMenuItem.Name = "fileSelectCommPortMenuItem";
             this.fileSelectCommPortMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.fileSelectCommPortMenuItem.Text = "Select Comm Port";
-            this.fileSelectCommPortMenuItem.DropDownOpening += new System.EventHandler(this.fileSelectCommPortMenuItem_DropDownOpening);
+            this.fileSelectCommPortMenuItem.Text = "Select &Comm Port";
             this.fileSelectCommPortMenuItem.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.fileSelectCommPortMenuItem_DropDownItemClicked);
+            this.fileSelectCommPortMenuItem.DropDownOpening += new System.EventHandler(this.fileSelectCommPortMenuItem_DropDownOpening);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(167, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.exitToolStripMenuItem.Text = "&Exit";
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.enableDefinedValuesToolStripMenuItem,
-            this.disableDefinedValuesToolStripMenuItem,
             this.writeChannelToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
             this.testToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.testToolStripMenuItem.Text = "Startup";
+            this.testToolStripMenuItem.Text = "&Startup";
             // 
             // enableDefinedValuesToolStripMenuItem
             // 
             this.enableDefinedValuesToolStripMenuItem.Name = "enableDefinedValuesToolStripMenuItem";
-            this.enableDefinedValuesToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.enableDefinedValuesToolStripMenuItem.Text = "Enable Defined Values";
+            this.enableDefinedValuesToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.enableDefinedValuesToolStripMenuItem.Text = "&Enable Startup Values";
             this.enableDefinedValuesToolStripMenuItem.Click += new System.EventHandler(this.enableDefinedValuesToolStripMenuItem_Click);
-            // 
-            // disableDefinedValuesToolStripMenuItem
-            // 
-            this.disableDefinedValuesToolStripMenuItem.Name = "disableDefinedValuesToolStripMenuItem";
-            this.disableDefinedValuesToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.disableDefinedValuesToolStripMenuItem.Text = "Disable Defined Values";
-            this.disableDefinedValuesToolStripMenuItem.Click += new System.EventHandler(this.disableDefinedValuesToolStripMenuItem_Click);
             // 
             // writeChannelToolStripMenuItem
             // 
@@ -262,91 +268,91 @@
             this.channel10ToolStripMenuItem,
             this.channel11ToolStripMenuItem});
             this.writeChannelToolStripMenuItem.Name = "writeChannelToolStripMenuItem";
-            this.writeChannelToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.writeChannelToolStripMenuItem.Text = "Write Channel";
+            this.writeChannelToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.writeChannelToolStripMenuItem.Text = "Save Startup &Position ";
             // 
             // channel0ToolStripMenuItem
             // 
             this.channel0ToolStripMenuItem.Name = "channel0ToolStripMenuItem";
-            this.channel0ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel0ToolStripMenuItem.Text = "Channel 0";
+            this.channel0ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel0ToolStripMenuItem.Text = "Channel &0";
             this.channel0ToolStripMenuItem.Click += new System.EventHandler(this.channel0ToolStripMenuItem_Click);
             // 
             // channel1ToolStripMenuItem
             // 
             this.channel1ToolStripMenuItem.Name = "channel1ToolStripMenuItem";
-            this.channel1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel1ToolStripMenuItem.Text = "Channel 1";
+            this.channel1ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel1ToolStripMenuItem.Text = "Channel &1";
             this.channel1ToolStripMenuItem.Click += new System.EventHandler(this.channel1ToolStripMenuItem_Click);
             // 
             // channel2ToolStripMenuItem
             // 
             this.channel2ToolStripMenuItem.Name = "channel2ToolStripMenuItem";
-            this.channel2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel2ToolStripMenuItem.Text = "Channel 2";
+            this.channel2ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel2ToolStripMenuItem.Text = "Channel &2";
             this.channel2ToolStripMenuItem.Click += new System.EventHandler(this.channel2ToolStripMenuItem_Click);
             // 
             // channel3ToolStripMenuItem
             // 
             this.channel3ToolStripMenuItem.Name = "channel3ToolStripMenuItem";
-            this.channel3ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel3ToolStripMenuItem.Text = "Channel 3";
+            this.channel3ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel3ToolStripMenuItem.Text = "Channel &3";
             this.channel3ToolStripMenuItem.Click += new System.EventHandler(this.channel3ToolStripMenuItem_Click);
             // 
             // channel4ToolStripMenuItem
             // 
             this.channel4ToolStripMenuItem.Name = "channel4ToolStripMenuItem";
-            this.channel4ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel4ToolStripMenuItem.Text = "Channel 4";
+            this.channel4ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel4ToolStripMenuItem.Text = "Channel &4";
             this.channel4ToolStripMenuItem.Click += new System.EventHandler(this.channel4ToolStripMenuItem_Click);
             // 
             // channel5ToolStripMenuItem
             // 
             this.channel5ToolStripMenuItem.Name = "channel5ToolStripMenuItem";
-            this.channel5ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel5ToolStripMenuItem.Text = "Channel 5";
+            this.channel5ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel5ToolStripMenuItem.Text = "Channel &5";
             this.channel5ToolStripMenuItem.Click += new System.EventHandler(this.channel5ToolStripMenuItem_Click);
             // 
             // channel6ToolStripMenuItem
             // 
             this.channel6ToolStripMenuItem.Name = "channel6ToolStripMenuItem";
-            this.channel6ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel6ToolStripMenuItem.Text = "Channel 6";
+            this.channel6ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel6ToolStripMenuItem.Text = "Channel &6";
             this.channel6ToolStripMenuItem.Click += new System.EventHandler(this.channel6ToolStripMenuItem_Click);
             // 
             // channel7ToolStripMenuItem
             // 
             this.channel7ToolStripMenuItem.Name = "channel7ToolStripMenuItem";
-            this.channel7ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel7ToolStripMenuItem.Text = "Channel 7";
+            this.channel7ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel7ToolStripMenuItem.Text = "Channel &7";
             this.channel7ToolStripMenuItem.Click += new System.EventHandler(this.channel7ToolStripMenuItem_Click);
             // 
             // channel8ToolStripMenuItem
             // 
             this.channel8ToolStripMenuItem.Name = "channel8ToolStripMenuItem";
-            this.channel8ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel8ToolStripMenuItem.Text = "Channel 8";
+            this.channel8ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel8ToolStripMenuItem.Text = "Channel &8";
             this.channel8ToolStripMenuItem.Click += new System.EventHandler(this.channel8ToolStripMenuItem_Click);
             // 
             // channel9ToolStripMenuItem
             // 
             this.channel9ToolStripMenuItem.Name = "channel9ToolStripMenuItem";
-            this.channel9ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel9ToolStripMenuItem.Text = "Channel 9";
+            this.channel9ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel9ToolStripMenuItem.Text = "Channel &9";
             this.channel9ToolStripMenuItem.Click += new System.EventHandler(this.channel9ToolStripMenuItem_Click);
             // 
             // channel10ToolStripMenuItem
             // 
             this.channel10ToolStripMenuItem.Name = "channel10ToolStripMenuItem";
-            this.channel10ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel10ToolStripMenuItem.Text = "Channel 10";
+            this.channel10ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel10ToolStripMenuItem.Text = "Channel &10";
             this.channel10ToolStripMenuItem.Click += new System.EventHandler(this.channel10ToolStripMenuItem_Click);
             // 
             // channel11ToolStripMenuItem
             // 
             this.channel11ToolStripMenuItem.Name = "channel11ToolStripMenuItem";
-            this.channel11ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.channel11ToolStripMenuItem.Text = "Channel 11";
+            this.channel11ToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.channel11ToolStripMenuItem.Text = "Channel &11";
             this.channel11ToolStripMenuItem.Click += new System.EventHandler(this.channel11ToolStripMenuItem_Click);
             // 
             // terminalToolStripMenuItem
@@ -355,13 +361,13 @@
             this.resetToolStripMenuItem});
             this.terminalToolStripMenuItem.Name = "terminalToolStripMenuItem";
             this.terminalToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.terminalToolStripMenuItem.Text = "Terminal";
+            this.terminalToolStripMenuItem.Text = "&Terminal";
             // 
             // resetToolStripMenuItem
             // 
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.resetToolStripMenuItem.Text = "Reset";
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
+            this.resetToolStripMenuItem.Text = "&Reset";
             this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
             // 
             // groupBox1
@@ -1186,13 +1192,13 @@
             this.toolStripDropDownButtonCommPort.Name = "toolStripDropDownButtonCommPort";
             this.toolStripDropDownButtonCommPort.Size = new System.Drawing.Size(82, 20);
             this.toolStripDropDownButtonCommPort.Text = "Comm Port";
-            this.toolStripDropDownButtonCommPort.DropDownOpening += new System.EventHandler(this.toolStripDropDownButtonCommPort_DropDownOpening);
             this.toolStripDropDownButtonCommPort.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStripDropDownButtonCommPort_DropDownItemClicked);
+            this.toolStripDropDownButtonCommPort.DropDownOpening += new System.EventHandler(this.toolStripDropDownButtonCommPort_DropDownOpening);
             // 
             // toolStripStateText
             // 
             this.toolStripStateText.Name = "toolStripStateText";
-            this.toolStripStateText.Size = new System.Drawing.Size(776, 17);
+            this.toolStripStateText.Size = new System.Drawing.Size(781, 17);
             this.toolStripStateText.Spring = true;
             this.toolStripStateText.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -1207,11 +1213,6 @@
             // 
             // numericUpDown13
             // 
-            this.numericUpDown13.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
             this.numericUpDown13.Location = new System.Drawing.Point(51, 21);
             this.numericUpDown13.Maximum = new decimal(new int[] {
             10,
@@ -1297,9 +1298,10 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "Serial Servo Controller";
+            this.Text = "Serial Servo Controller 0.2.0a";
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -1444,7 +1446,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStateText;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enableDefinedValuesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem disableDefinedValuesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem writeChannelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem channel1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem channel2ToolStripMenuItem;
@@ -1466,6 +1467,8 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

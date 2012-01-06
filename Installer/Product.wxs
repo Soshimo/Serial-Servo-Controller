@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	 xmlns:fire="http://schemas.microsoft.com/wix/FirewallExtension"
+	 xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+	 xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	<?ifndef AppName ?>
+	<?define AppName = "Serial Servo Controller 0.2.0a" ?>
+	<?endif ?>
+	<?ifndef Description ?>
+	<?define Description = "Softare to control the Serial Servo Board" ?>
+	<?endif ?>
+	<?ifndef ProductName ?>
+	<?define ProductName = "Serial Servo Controller 0.2.0a" ?>
+	<?endif ?>
+	<?ifndef Manufacturer ?>
+	<?define Manufacturer = "Sandog Productions, LLC"?>
+	<?endif ?>
+
+	<Product Id="17E3E740-C548-49d3-AF99-E76D00DF0FE1"
+			 Name="$(var.ProductName)"
+			 Language="1033"
+			 Version="1.0.0.0"
+			 Manufacturer="$(var.Manufacturer)"
+			 UpgradeCode="71253200-C383-4cc3-9C17-A7DD8D48BB7D">
+		<Package InstallerVersion="200"
+				 Compressed="yes" />
+
+		<Media Id="1"
+			   Cabinet="media1.cab"
+			   EmbedCab="yes" />
+
+		<PropertyRef Id="NETFRAMEWORK35"/>
+		<PropertyRef Id="NETFRAMEWORK35_SP_LEVEL"/>
+
+		<Condition Message="This application requires .NET Framework 3.5 SP1. Please install the .NET Framework then run this installer again.">
+			<![CDATA[NETFRAMEWORK35]]>
+		</Condition>
+
+		<Condition Message="This application requires .NET Framework 3.5 SP1. Please install the .NET Framework then run this installer again.">
+			<![CDATA[(NETFRAMEWORK35_SP_LEVEL = "#1")]]>
+		</Condition>
+
+		<Directory Id="TARGETDIR"
+				   Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="ManufacturerFolder"
+						   Name="$(var.Manufacturer)">
+					<Directory Id="INSTALLDIR"
+							   Name="$(var.AppName)">
+						<Component Id="MainExecutable"
+								   Guid="3D85297E-5377-4e30-96B5-0F5222BE35EC">
+
+							<!-- Application Files -->
+							<File Source="$(var.SerialServoController.TargetPath)"
+								  KeyPath="yes">
+							</File>
+
+							<RemoveFolder Id="DeleteProgramMenuFolder"
+										  Directory="ProgramMenuDir"
+										  On="uninstall"/>
+						</Component>
+					</Directory>
+				</Directory>
+			</Directory>
+
+			<Directory Id="ProgramMenuFolder"
+					   Name="Programs">
+				<Directory Id="ProgramMenuDir"
+						   Name="Serial Servo Controller 0.2.0a">
+					<Component Id="ProgramMenuDir"
+							   Guid="BF266F76-192A-493E-B5C7-C54660E61D7D">
+						<RemoveFolder Id="ProgramMenuDir"
+									  On="uninstall" />
+						<RegistryValue Root="HKCU"
+									   Key="Software\SanDog Productions LLC\SerialServoController0.2.0a"
+									   Type="string"
+									   Value=""
+									   KeyPath="yes" />
+					</Component>
+				</Directory>
+			</Directory>
+
+			<Directory Id="DesktopFolder"
+					   Name="Desktop">
+				<Component Id="DesktopShortcut"
+						   Guid="72CD37F9-E5A2-480f-A645-D76F149DE1B5">
+					<Condition>INSTALLDESKTOPSHORTCUT</Condition>
+					<RegistryKey Root="HKCU"
+								 Key="SerialSoftwareController"
+								 Action="createAndRemoveOnUninstall">
+						<RegistryValue Name="Installed"
+									   Value="1"
+									   Type="integer"
+									   KeyPath="yes"/>
+					</RegistryKey>
+					<Shortcut Id="MyProductDesktopShortcut"
+							  Directory="DesktopFolder"
+							  Name="Serial Servo Controller 0.2.0a"
+							  WorkingDirectory="INSTALLDIR"
+							  Target="[#SerialServoController.exe]"
+							  Icon="Icon.exe">
+						<Icon Id="Icon.exe"
+							  SourceFile="$(var.SerialServoController.TargetPath)" />
+					</Shortcut>
+				</Component>
+			</Directory>
+			
+		</Directory>
+
+		<UI>
+			<Property Id="WIXUI_INSTALLDIR"
+					  Value="INSTALLDIR" />
+
+			<Property Id="INSTALLDESKTOPSHORTCUT"
+					  Value="1" />
+
+			<UIRef Id="MyWixUI_InstallDir" />
+
+			<Publish Dialog="ExitDialog"
+					 Control="Finish"
+					 Event="DoAction"
+					 Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+		</UI>
+
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
+				  Value="Launch $(var.AppName)" />
+
+		<Property Id="WixShellExecTarget"
+				  Value="[#SerialServoController.exe]" />
+		<CustomAction Id="LaunchApplication"
+					  BinaryKey="WixCA"
+					  DllEntry="WixShellExec"
+					  Impersonate="yes" />
+		
+		<Feature Id="ProductFeature"
+				 Title="$(var.ProductName)"
+				 Description="$(var.Description)"
+				 Display="expand"
+				 ConfigurableDirectory="INSTALLDIR"
+				 Level="1" >
+			<ComponentRef Id="MainExecutable" />
+			<ComponentRef Id="DesktopShortcut"/>
+			<ComponentRef Id="ProgramMenuDir" />
+		</Feature>
+
+		<CustomAction Id="PreventDowngrading"
+					  Error="Newer version already installed." />
+		
+		<InstallExecuteSequence>
+			<Custom Action="PreventDowngrading"
+					After="FindRelatedProducts" >NEWPRODUCTFOUND</Custom>
+			<RemoveExistingProducts After="InstallInitialize" />
+		</InstallExecuteSequence>
+
+		<InstallUISequence>
+			<Custom Action="PreventDowngrading"
+					After="FindRelatedProducts" >NEWPRODUCTFOUND</Custom>
+		</InstallUISequence>
+	</Product>
+</Wix>
+
